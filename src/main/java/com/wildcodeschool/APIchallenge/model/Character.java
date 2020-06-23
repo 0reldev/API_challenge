@@ -119,7 +119,7 @@ public class Character {
         Integer max = 591;
         Double randomNumber = Math.floor(Math.random() * Math.floor(max));
 /*        TODO: convertir le randomNumber en Integer*/
-
+return null;
     }
 
 }
