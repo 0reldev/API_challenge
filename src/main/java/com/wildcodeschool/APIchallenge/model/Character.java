@@ -112,4 +112,14 @@ public class Character {
     public void setCreated(String created) {
         this.created = created;
     }
+
+    public Integer randomId() {
+
+/*        TODO: récupérer le nombre d'entrée dans l'API*/
+        Integer max = 591;
+        Double randomNumber = Math.floor(Math.random() * Math.floor(max));
+/*        TODO: convertir le randomNumber en Integer*/
+
+    }
+
 }
