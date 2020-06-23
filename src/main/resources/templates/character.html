@@ -3,6 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <title>Character</title>
+    <link rel="stylesheet" href="style.css">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
 </head>
 <body>
 
@@ -21,9 +23,9 @@
             <p th:text="*{name}">$name</p>
             <p th:text="*{status}">$status</p>
             <p th:text="*{species}">$species</p>
-            <p class="textDescription">Last known location:</p> <br>
+            <p class="textDescription">Last known location:</p>
             <p th:text="*{location.name}" href="*location.url">$location</p>
-            <p class="textDescription">First seen in:</p> <br>
+<!--            <p class="textDescription">First seen in:</p> <br>-->
          <!--   TODO: -->
 <!--            <p th:text="*{episodes[0]}" >$episode1s[0]</p>-->
         </div>

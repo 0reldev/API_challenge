@@ -1,0 +1,34 @@
+* {
+    color: white;
+}
+body {
+    background-color: #202329;
+}
+
+h1 {
+    text-align: center;
+}
+
+header {
+    background-color: white;
+
+}
+
+.characterCard {
+    display: flex;
+    flex-direction: row;
+}
+
+.cardContent {
+    background-color: #3c3e44 ;
+    width: 30rem;
+    border-radius: 10px;
+    padding: 2rem;
+}
+img {
+    border-radius: 5rem;
+}
+.infos {
+    padding: 2rem;
+    background-color: #3c3e44 ;
+}
