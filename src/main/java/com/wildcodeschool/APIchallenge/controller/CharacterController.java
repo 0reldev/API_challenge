@@ -1,50 +1,39 @@
 package com.wildcodeschool.APIchallenge.controller;
 
-import com.fasterxml.jackson.core.JsonProcessingException;
-import com.fasterxml.jackson.databind.ObjectMapper;
+import com.wildcodeschool.APIchallenge.model.Character;
+import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.reactive.function.client.WebClient;
 import reactor.core.publisher.Mono;
 
-@RestController
+@Controller
 public class CharacterController {
-
 
     private static final String RICKANDMORTY_URL = "https://rickandmortyapi.com/api/";
 
-
     @GetMapping("/")
-        public String showIndex() {
+    public String showIndex() {
 
-        return "/";
+        return "index";
     }
 
-    @GetMapping("character")
+    @GetMapping("/character")
     public String showCharacter(Model model, @RequestParam Integer id) {
 
         WebClient webClient = WebClient.create(RICKANDMORTY_URL);
 
-        Mono<String> call = webClient.get()
+        Mono<Character> call = webClient.get()
                 .uri(uriBuilder -> uriBuilder
                         .path("/character/{id}/")
                         .build(id))
                 .retrieve()
-                .bodyToMono(String.class);
-        String response = call.block();
-        ObjectMapper objectMapper = new ObjectMapper();
-        Character characterObject = null;
+                .bodyToMono(Character.class);
+        Character response = call.block();
 
-        try {
+        model.addAttribute("characterInfos", response);
 
-            characterObject = objectMapper.readValue(response, Character.class);
-        } catch (JsonProcessingException e) {
-
-            e.printStackTrace();
-        } model.addAttribute("characterInfos", characterObject);
         return "character";
     }
 }
