@@ -117,9 +117,9 @@ public class Character {
 
 /*        TODO: récupérer le nombre d'entrée dans l'API*/
         Integer max = 591;
-        Double randomNumber = Math.floor(Math.random() * Math.floor(max));
-/*        TODO: convertir le randomNumber en Integer*/
-return null;
+        int randomNumber = (int) Math.floor(Math.random() * Math.floor(max));
+        Integer intRandomNumber = Integer.valueOf(randomNumber);
+        return intRandomNumber;
     }
 
 }

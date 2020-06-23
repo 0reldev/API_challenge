@@ -20,7 +20,7 @@ public class CharacterController {
     }
 
     @GetMapping("/character")
-    public String showCharacter(Model model, @RequestParam Integer id) {
+    public String showCharacterById(Model model, @RequestParam Integer id) {
 
         WebClient webClient = WebClient.create(RICKANDMORTY_URL);
 
@@ -28,6 +28,28 @@ public class CharacterController {
                 .uri(uriBuilder -> uriBuilder
                         .path("/character/{id}/")
                         .build(id))
+                .retrieve()
+                .bodyToMono(Character.class);
+        Character response = call.block();
+
+        model.addAttribute("characterInfos", response);
+
+        return "character";
+    }
+
+
+    @GetMapping("/character/rand")
+    public String showRandomCharacter(Model model) {
+
+        Character character = new Character();
+        Integer rand = character.randomId();
+
+        WebClient webClient = WebClient.create(RICKANDMORTY_URL);
+
+        Mono<Character> call = webClient.get()
+                .uri(uriBuilder -> uriBuilder
+                        .path("/character/{id}/")
+                        .build(rand))
                 .retrieve()
                 .bodyToMono(Character.class);
         Character response = call.block();

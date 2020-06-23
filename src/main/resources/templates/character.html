@@ -16,12 +16,14 @@
         </div>
 
         <div class="infos">
+            <p th:text="*{id}">$id</p>
             <p th:text="*{name}">$name</p>
             <p th:text="*{status}">$status</p>
             <p th:text="*{species}">$species</p>
             <p class="textDescription">Last known location:</p> <br>
             <p th:text="*{location.name}" href="*location.url">$location</p>
             <p class="textDescription">First seen in:</p> <br>
+         <!--   TODO: -->
 <!--            <p th:text="*{episodes[0]}" >$episode1s[0]</p>-->
         </div>
 
