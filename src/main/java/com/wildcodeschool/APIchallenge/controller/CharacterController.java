@@ -64,19 +64,25 @@ public class CharacterController {
     }
 
 
-    @GetMapping("/character/rand4")
-    public String showFourRandomCharacter(Model model,
-                                                  @RequestParam Integer id1,
-                                                  @RequestParam Integer id2,
-                                                  @RequestParam Integer id3,
-                                                  @RequestParam Integer id4) {
+    @GetMapping("/character/rand6")
+    public String showSixRandomCharacter(Model model) {
+
+        Character character = new Character();
+        Integer rand1 = character.randomId();
+        Integer rand2 = character.randomId();
+        Integer rand3 = character.randomId();
+        Integer rand4 = character.randomId();
+        Integer rand5 = character.randomId();
+        Integer rand6 = character.randomId();
 
         List<Character> characters = new ArrayList();
         List<Integer> ids = new ArrayList<>();
-        ids.add(id1);
-        ids.add(id2);
-        ids.add(id3);
-        ids.add(id4);
+        ids.add(rand1);
+        ids.add(rand2);
+        ids.add(rand3);
+        ids.add(rand4);
+        ids.add(rand5);
+        ids.add(rand6);
 
         WebClient webClient = WebClient.create(RICKANDMORTY_URL);
 
