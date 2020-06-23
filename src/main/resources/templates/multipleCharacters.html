@@ -1,10 +1,34 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>$Title$</title>
+    <title>Characters</title>
 </head>
 <body>
-$END$
+
+<h1>Characters</h1>
+
+<div class="cardContent">
+
+    <div class="characterCard" th:each="character : ${characterInfos}" th:object="${character}">
+
+        <div class="picture">
+            <img th:src="*{image}">
+        </div>
+
+        <div class="infos">
+            <p th:text="*{id}">$id</p>
+            <p th:text="*{name}">$name</p>
+            <p th:text="*{status}">$status</p>
+            <p th:text="*{species}">$species</p>
+            <p class="textDescription">Last known location:</p> <br>
+            <p th:text="*{location.name}" href="*location.url">$location</p>
+            <p class="textDescription">First seen in:</p> <br>
+            <!--   TODO: -->
+            <!--            <p th:text="*{episodes[0]}" >$episode1s[0]</p>-->
+        </div>
+    </div>
+</div>
+
 </body>
 </html>

@@ -8,6 +8,10 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.reactive.function.client.WebClient;
 import reactor.core.publisher.Mono;
 
+import java.lang.reflect.Array;
+import java.util.ArrayList;
+import java.util.List;
+
 @Controller
 public class CharacterController {
 
@@ -57,5 +61,38 @@ public class CharacterController {
         model.addAttribute("characterInfos", response);
 
         return "character";
+    }
+
+
+    @GetMapping("/character/rand4")
+    public String showFourRandomCharacter(Model model,
+                                                  @RequestParam Integer id1,
+                                                  @RequestParam Integer id2,
+                                                  @RequestParam Integer id3,
+                                                  @RequestParam Integer id4) {
+
+        List<Character> characters = new ArrayList();
+        List<Integer> ids = new ArrayList<>();
+        ids.add(id1);
+        ids.add(id2);
+        ids.add(id3);
+        ids.add(id4);
+
+        WebClient webClient = WebClient.create(RICKANDMORTY_URL);
+
+        for (Integer id : ids) {
+            Mono<Character> call = webClient.get()
+                    .uri(uriBuilder -> uriBuilder
+                            .path("/character/{id}/")
+                            .build(id))
+                    .retrieve()
+                    .bodyToMono(Character.class);
+            Character response = call.block();
+            characters.add(response);
+        };
+
+        model.addAttribute("characterInfos", characters);
+
+        return "multipleCharacters";
     }
 }
