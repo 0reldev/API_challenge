@@ -1,17 +1,13 @@
 * {
     color: white;
 }
+
 body {
     background-color: #202329;
 }
 
 h1 {
     text-align: center;
-}
-
-header {
-    background-color: white;
-
 }
 
 .characterCard {
