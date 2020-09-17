@@ -1,36 +1,26 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
-<head>
-    <meta charset="UTF-8">
-    <title>Character</title>
-    <link rel="stylesheet" href="/style.css">
-    <meta content="width=device-width, initial-scale=1.0" name="viewport">
-</head>
-<body>
-
-<h1>Character</h1>
-
-<div class="cardContent">
-
-    <div class="characterCard" th:object="${characterInfos}">
-
-        <div class="picture">
-            <img th:src="*{image}">
+    <head>
+        <meta charset="UTF-8">
+        <title>Character</title>
+        <link rel="stylesheet" href="/style.css">
+        <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    </head>
+    <body>
+        <h1>Character</h1>
+        <div class="cardContent">
+            <div class="characterCard" th:object="${characterInfos}">
+                <div class="picture">
+                    <img th:src="*{image}">
+                </div>
+                <div class="infos">
+                    <p th:text="*{name}">$name</p>
+                    <p th:text="*{status}">$status</p>
+                    <p th:text="*{species}">$species</p>
+                    <p class="textDescription">Last known location:</p>
+                    <p th:text="*{location.name}" href="*location.url">$location</p>
+                </div>
+            </div>
         </div>
-
-        <div class="infos">
-<!--            <p th:text="*{id}">$id</p>-->
-            <p th:text="*{name}">$name</p>
-            <p th:text="*{status}">$status</p>
-            <p th:text="*{species}">$species</p>
-            <p class="textDescription">Last known location:</p>
-            <p th:text="*{location.name}" href="*location.url">$location</p>
-<!--            <p class="textDescription">First seen in:</p> <br>-->
-         <!--   TODO: -->
-<!--            <p th:text="*{episodes[0]}" >$episode1s[0]</p>-->
-        </div>
-    </div>
-</div>
-
-</body>
+    </body>
 </html>

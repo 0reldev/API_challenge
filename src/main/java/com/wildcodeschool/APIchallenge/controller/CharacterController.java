@@ -27,7 +27,6 @@ public class CharacterController {
     public String showCharacterById(Model model, @RequestParam Integer id) {
 
         WebClient webClient = WebClient.create(RICKANDMORTY_URL);
-
         Mono<Character> call = webClient.get()
                 .uri(uriBuilder -> uriBuilder
                         .path("/character/{id}/")
@@ -35,9 +34,7 @@ public class CharacterController {
                 .retrieve()
                 .bodyToMono(Character.class);
         Character response = call.block();
-
         model.addAttribute("characterInfos", response);
-
         return "character";
     }
 
@@ -47,9 +44,7 @@ public class CharacterController {
 
         Character character = new Character();
         Integer rand = character.randomId();
-
         WebClient webClient = WebClient.create(RICKANDMORTY_URL);
-
         Mono<Character> call = webClient.get()
                 .uri(uriBuilder -> uriBuilder
                         .path("/character/{id}/")
@@ -57,9 +52,7 @@ public class CharacterController {
                 .retrieve()
                 .bodyToMono(Character.class);
         Character response = call.block();
-
         model.addAttribute("characterInfos", response);
-
         return "character";
     }
 
@@ -87,6 +80,7 @@ public class CharacterController {
         WebClient webClient = WebClient.create(RICKANDMORTY_URL);
 
         for (Integer id : ids) {
+
             Mono<Character> call = webClient.get()
                     .uri(uriBuilder -> uriBuilder
                             .path("/character/{id}/")
@@ -96,9 +90,7 @@ public class CharacterController {
             Character response = call.block();
             characters.add(response);
         };
-
         model.addAttribute("characterInfos", characters);
-
         return "multipleCharacters";
     }
 }

@@ -1,34 +1,27 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
-<head>
-    <meta charset="UTF-8">
-    <title>The Rick and Morty API 2</title>
-    <link rel="stylesheet" href="/style.css">
-    <meta content="width=device-width, initial-scale=1.0" name="viewport">
-</head>
-<body>
-
-<header>
-    <h1>The Rick and Morty API 2</h1>
-</header>
-
-
-<form class="IdSearchForm" action="/character" method="GET">
-    <label>Character ID : </label>
-    <input name="id" placeholder="ID">
-    <input type="submit" value="Send">
-</form>
-
-
-<form class="IdSearchForm" action="/character/rand" method="GET">
-    <p>Show a random character: </p>
-    <input type="submit" value="Random">
-</form>
-
-<form class="IdSearchForm" action="/character/rand6" method="GET">
-    <p>Show six random characters: </p>
-    <input type="submit" value="Random x 6">
-</form>
-
-</body>
+    <head>
+        <meta charset="UTF-8">
+        <title>The Rick and Morty API 2</title>
+        <link rel="stylesheet" href="/style.css">
+        <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    </head>
+    <body>
+        <header>
+            <h1>The Rick and Morty API 2</h1>
+        </header>
+        <form class="IdSearchForm" action="/character" method="GET">
+            <label>Character ID : </label>
+            <input name="id" placeholder="ID">
+            <input type="submit" value="Send">
+        </form>
+        <form class="IdSearchForm" action="/character/rand" method="GET">
+            <p>Show a random character: </p>
+            <input type="submit" value="Random">
+        </form>
+        <form class="IdSearchForm" action="/character/rand6" method="GET">
+            <p>Show six random characters: </p>
+            <input type="submit" value="Random x 6">
+        </form>
+    </body>
 </html>

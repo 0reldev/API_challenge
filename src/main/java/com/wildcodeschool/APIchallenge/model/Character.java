@@ -121,5 +121,4 @@ public class Character {
         Integer intRandomNumber = Integer.valueOf(randomNumber);
         return intRandomNumber;
     }
-
 }

@@ -21,10 +21,16 @@ h1 {
     border-radius: 10px;
     padding: 2rem;
 }
+
 img {
     border-radius: 5rem;
 }
+
 .infos {
     padding: 2rem;
     background-color: #3c3e44 ;
+}
+
+input {
+    color: black;
 }
